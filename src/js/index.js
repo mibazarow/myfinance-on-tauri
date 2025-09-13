@@ -138,14 +138,14 @@ function addAccountRow() {
     accountRow.setAttribute('data-id', nextId);
 
     accountRow.innerHTML = `
-        <div class="account_col bank_name">
+        <div class="bank_name">
             <input type="text" class="account_name_input" placeholder="Название банка" value="">
         </div>
-        <div class="account_col bank_balance">
+        <div class="bank_balance">
             <input type="number" class="account_balance_input" placeholder="Баланс" value="0">
-        </div>
-        <div class="account_col bank_actions">
-            <button class="delete" type="button">❌</button>
+            <div class="bank_actions">
+                <button class="delete" type="button"></button>
+            </div>
         </div>
     `;
 
@@ -179,14 +179,14 @@ function updateAccountsList() {
         accountRow.setAttribute('data-id', account.id);
 
         accountRow.innerHTML = `
-            <div class="account_col bank_name">
+            <div class="bank_name">
                 <input type="text" class="account_name_input" placeholder="Название банка" value="${account.name}">
             </div>
-            <div class="account_col bank_balance">
+            <div class="bank_balance">
                 <input type="number" class="account_balance_input" placeholder="Баланс" value="${account.balance}">
-            </div>
-            <div class="account_col bank_actions">
-                <button class="delete" type="button">❌</button>
+                 <div class="bank_actions">
+                    <button class="delete" type="button"></button>
+                </div>
             </div>
         `;
 
