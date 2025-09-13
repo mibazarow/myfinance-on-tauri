@@ -1,0 +1,17 @@
+{
+  "name": "app-myfinance",
+  "version": "1.0.0",
+  "description": "Мои финансы - приложение для учета личных финансов",
+  "main": "index.html",
+  "scripts": {
+    "dev": "tauri dev",
+    "build": "tauri build",
+    "tauri": "tauri"
+  },
+  "devDependencies": {
+    "@tauri-apps/cli": "^1.4.0"
+  },
+  "dependencies": {
+    "@tauri-apps/api": "^1.4.0"
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "name": "myfinance-app",
+  "short_name": "MyFinance",
+  "description": "Мои финансы",
+  "icons": [
+    {
+      "src": "./img/app.png",
+      "sizes": "144x144",
+      "type": "image/png"
+    }
+  ],
+  "start_url": "./index.html",
+  "display": "standalone",
+  "theme_color": "#ffffff",
+  "background_color": "#ffffff"
+}

@@ -1,0 +1,174 @@
+* {
+    -webkit-tap-highlight-color: rgba(0,0,0,0);
+    box-sizing: border-box;
+}
+
+body {
+    -webkit-touch-callout: none;
+    -webkit-text-size-adjust: none;
+    -webkit-user-select: none;
+    user-select: none;
+    background-color:#f5f5f5;
+    font-family: system-ui, -apple-system, -apple-system-font, 'Segoe UI', 'Roboto', sans-serif;
+    font-size:14px;
+    height:100vh;
+    margin:0px;
+    padding:0px;
+    padding: env(safe-area-inset-top, 0px) env(safe-area-inset-right, 0px) env(safe-area-inset-bottom, 0px) env(safe-area-inset-left, 0px);
+    width:100%;
+}
+
+/* App Styles */
+.app {
+    position: relative;
+    padding: 20px;
+    background-color: #fff;
+}
+
+
+/* Header Styles */
+.app_header {
+    display: flex;
+    background-color: #f0f0f0;
+    padding: 10px;
+    border-radius: 4px 4px 0 0;
+    font-weight: bold;
+    border-bottom: 2px solid #ddd;
+}
+
+.app_header_col {
+    padding: 8px;
+}
+
+.bank_name {
+    flex: 2;
+}
+
+.bank_balance {
+    flex: 1;
+    text-align: right;
+}
+
+.bank_actions {
+    flex: 1;
+    text-align: center;
+}
+
+/* Content Styles */
+.app_content {
+    margin-bottom: 20px;
+    border: 1px solid #ddd;
+    border-top: none;
+    border-radius: 0 0 4px 4px;
+    max-height: 400px;
+    overflow-y: auto;
+}
+
+.account_row {
+    display: flex;
+    padding: 10px;
+    border-bottom: 1px solid #eee;
+}
+
+.account_row:last-child {
+    border-bottom: none;
+}
+
+.account_col {
+    padding: 8px;
+}
+
+.account_actions {
+    display: flex;
+    gap: 5px;
+    justify-content: center;
+}
+
+/* Form Styles */
+#finance-form {
+    margin-bottom: 20px;
+}
+
+.app_form_row {
+    display: flex;
+    gap: 10px;
+    padding: 10px;
+    border-bottom: 1px solid #eee;
+}
+
+.app_buttons {
+    display: flex;
+    justify-content: space-between;
+    margin: 20px 0;
+}
+
+input[type="text"],
+input[type="number"] {
+    flex: 1;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 14px;
+}
+
+button {
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background-color 0.3s;
+}
+
+button:hover {
+    background-color: #45a049;
+}
+
+button#add-account-row {
+    background-color: #2196F3;
+}
+
+button#add-account-row:hover {
+    background-color: #1e88e5;
+}
+
+button#save-accounts {
+    background-color: #4CAF50;
+}
+
+button#save-accounts:hover {
+    background-color: #45a049;
+}
+
+button.delete {
+    background-color: #f44336;
+    padding: 5px 10px;
+    margin-left: 5px;
+}
+
+button.delete:hover {
+    background-color: #e53935;
+}
+
+/* Summary Styles */
+.app_summ {
+    display: flex;
+    justify-content: space-between;
+    padding: 15px;
+    background-color: #f9f9f9;
+    border-radius: 4px;
+    font-weight: bold;
+    border: 1px solid #ddd;
+    margin-top: 20px;
+}
+
+.app_summ_label {
+    font-size: 16px;
+}
+
+.app_summ_value {
+    font-size: 16px;
+    color: #4CAF50;
+}
