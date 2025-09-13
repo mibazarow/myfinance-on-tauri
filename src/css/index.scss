@@ -9,7 +9,7 @@ body {
   -webkit-user-select: none;
   user-select: none;
   font-family: system-ui, -apple-system, -apple-system-font, 'Segoe UI', 'Roboto', sans-serif;
-  font-size: 16px;
+  font-size: 17px;
   //height: 100vh;
   margin: 0px;
   padding: 0px;
@@ -22,12 +22,11 @@ body {
   min-width: 500px;
   height: 100vh;
   padding: 20px;
-  display: flex;
 
   &_content {
-    display: flex;
-    justify-content: space-between;
-    flex-wrap: wrap;
+    //display: flex;
+    //justify-content: space-between;
+    //flex-wrap: wrap;
     width: 100%;
   }
 
@@ -38,7 +37,6 @@ body {
     align-items: center;
     margin-bottom: 15px;
     &_label {
-      font-size: 13px;
       color: #888;
     }
 
@@ -50,7 +48,8 @@ body {
   &_buttons {
     display: flex;
     gap:15px;
-    margin-top: 15px;
+    width: 100%;
+    padding-top: 15px;
     align-items: center;
     justify-content: space-between;
     #add-account-row {
@@ -58,6 +57,7 @@ body {
       background: none;
       border:none;
       cursor: pointer;
+      font-size: 15px;
       &:hover {
         color: #0881FD;
       }
@@ -71,6 +71,7 @@ body {
       padding: 0px 10px;
       cursor: pointer;
       border-radius: 5px;
+      font-size: 15px;
       &:active {
         background: #0881CF;
       }
@@ -80,9 +81,10 @@ body {
 
 .bank {
   &_name {
+    float: left;
     display: flex;
     width: 50%;
-
+    margin-bottom: 2px;
     input {
       background: aliceblue;
       border: none;
@@ -92,15 +94,17 @@ body {
       color: #333333;
       height: 40px;
       outline: none;
+      font-size: 15px;
     }
   }
 
   &_balance {
+    float: left;
     width: 50%;
     display: flex;
     justify-content: space-between;
     flex: 1;
-
+    margin-bottom: 2px;
     input {
       width: 100%;
       height: 40px;
@@ -109,6 +113,7 @@ body {
       border-bottom:1px #ddd solid;
       padding: 0px 15px;
       outline: none;
+      font-size: 15px;
       color: #333333;
       text-align: right;
       &::-webkit-inner-spin-button {
