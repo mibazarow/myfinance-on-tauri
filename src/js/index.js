@@ -1,5 +1,4 @@
-// Импортируем Tauri API
-import { invoke } from '@tauri-apps/api/core';
+// Используем глобальный Tauri API
 
 // Глобальная переменная для хранения счетов
 let accounts = [];
@@ -7,8 +6,6 @@ let nextId = 1;
 
 // Инициализация при загрузке страницы
 window.onload = async function() {
-    console.log('Window loaded');
-
     // Инициализация интерфейса
     initApp();
 
@@ -61,7 +58,7 @@ function createDemoAccounts() {
 async function loadAccounts() {
     try {
         // Вызываем Rust функцию для загрузки данных
-        const savedAccounts = await invoke('load_accounts');
+        const savedAccounts = await window.__TAURI__.core.invoke('load_accounts');
 
         if (savedAccounts && savedAccounts.length > 0) {
             accounts = savedAccounts;
@@ -72,7 +69,7 @@ async function loadAccounts() {
             // Если нет сохраненных счетов, создаем демо-счета
             accounts = createDemoAccounts();
             // Сохраняем демо-счета
-            await invoke('save_accounts', { accounts });
+            await window.__TAURI__.core.invoke('save_accounts', { accounts });
         }
 
         updateAccountsList();
@@ -113,7 +110,7 @@ async function saveAccounts() {
         });
 
         // Сохраняем новый список через Tauri API
-        await invoke('save_accounts', { accounts: newAccounts });
+        await window.__TAURI__.core.invoke('save_accounts', { accounts: newAccounts });
 
         // Обновляем глобальный список
         accounts = newAccounts;

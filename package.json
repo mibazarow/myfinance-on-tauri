@@ -1,6 +1,6 @@
 {
   "name": "app-myfinance",
-  "version": "1.0.3",
+  "version": "2.0.1",
   "description": "Мои финансы - приложение для учета личных финансов",
   "main": "index.html",
   "scripts": {

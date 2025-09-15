@@ -1,24 +1,27 @@
-# Мои финансы (Tauri версия)
+# Мои финансы (Tauri v2 версия)
 
-Это аналог приложения "Мои финансы", реализованный с использованием фреймворка Tauri вместо Electron/Cordova. Tauri позволяет создавать более легковесные настольные приложения с использованием веб-технологий и Rust.
+Это аналог приложения "Мои финансы", реализованный с использованием фреймворка Tauri v2 вместо Electron/Cordova. Tauri позволяет создавать более легковесные настольные приложения с использованием веб-технологий и Rust.
 
 ## Скриншот приложения
 
 ![Скриншот приложения](src-tauri/icons/screen_new.png)
 
-## Преимущества Tauri перед Electron
+## Преимущества Tauri v2 перед Electron
 - Значительно меньший размер приложения (в десятки раз)
 - Более высокая производительность
 - Использование системного WebView вместо полной установки Chromium
 - Безопасность, обеспечиваемая Rust
 - Доступ к нативным API через Rust
+- Улучшенная система плагинов (v2)
+- Поддержка мобильных платформ (iOS/Android) в v2
+- Обновленная архитектура и API
 
 ## Установка и запуск
 
 ### Требования
-- [Node.js](https://nodejs.org/) (рекомендуется версия 16 или новее)
-- [Rust](https://www.rust-lang.org/tools/install)
-- Зависимости для Tauri (см. [официальную документацию](https://tauri.app/v1/guides/getting-started/prerequisites/))
+- [Node.js](https://nodejs.org/) (рекомендуется версия 18 или новее)
+- [Rust](https://www.rust-lang.org/tools/install) (версия 1.70 или новее)
+- Зависимости для Tauri v2 (см. [официальную документацию](https://tauri.app/v1/guides/getting-started/prerequisites/))
 
 ### Настройка окружения на Windows
 
@@ -53,8 +56,8 @@
 ### Установка зависимостей
 
 ```bash
-# Установка Tauri CLI
-npm install -g @tauri-apps/cli
+# Установка Tauri CLI (v2)
+npm install -g @tauri-apps/cli@^2.0.0
 
 # Установка зависимостей проекта
 cd myfinance-on-tauri
@@ -85,14 +88,14 @@ npm run build
    ```powershell
    # Активация Developer Command Prompt
    & "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\Common7\Tools\VsDevCmd.bat" -arch=x64
-   
+
    # Сборка проекта
    cd путь\к\проекту
    npm run build
    ```
 
 2. **Решение проблемы с dlltool.exe**
-   - Если возникает ошибка "Error calling dlltool 'dlltool.exe': program not found", 
+   - Если возникает ошибка "Error calling dlltool 'dlltool.exe': program not found",
      убедитесь, что установлены LLVM tools или MinGW
    - Вы можете установить [LLVM](https://github.com/llvm/llvm-project/releases) или [MinGW](https://www.mingw-w64.org/downloads/)
    - Добавьте путь к бинарным файлам в PATH
@@ -134,9 +137,21 @@ npm run build
 - Значительно меньший размер приложения
 - Более высокая производительность
 
+## Обновление до Tauri v2
+
+Это приложение было успешно обновлено с Tauri v1.4 до v2.8.5. Основные изменения:
+
+- **Новая система плагинов**: используется `tauri-plugin-shell` для доступа к системным функциям
+- **Обновленная конфигурация**: `tauri.conf.json` использует новый формат v2
+- **Глобальный API**: доступ к Tauri API через `window.__TAURI__` (включено `withGlobalTauri: true`)
+- **ES модули**: полная поддержка современных JavaScript модулей
+- **Улучшенная безопасность**: обновленные CSP политики и управление разрешениями
+
 ## Дорожная карта развития
 
-- Улучшение интерфейса
+- ✅ **v2.0.1**: Обновление до Tauri v2.8.5, улучшенная архитектура
+- 🔄 Улучшение интерфейса
+- 📱 Возможное добавление мобильной версии (iOS/Android) благодаря Tauri v2
 
 ## Решение проблем
 

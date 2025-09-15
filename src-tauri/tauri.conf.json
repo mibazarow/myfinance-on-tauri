@@ -1,13 +1,14 @@
 {
   "productName": "Мои финансы",
-  "version": "1.0.0",
-  "identifier": "com.myfinance.app",
+  "version": "2.0.1",
+  "identifier": "com.myfinance.desktop",
   "build": {
     "beforeBuildCommand": "",
     "beforeDevCommand": "",
     "frontendDist": "../src"
   },
   "app": {
+    "withGlobalTauri": true,
     "security": {
       "csp": null
     },

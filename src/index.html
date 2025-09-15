@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="Content-Security-Policy"
-        content="default-src 'self' 'unsafe-inline' 'unsafe-eval' data:; style-src 'self' 'unsafe-inline'; media-src *; img-src 'self' data: content:;">
+        content="default-src 'self' 'unsafe-inline' 'unsafe-eval' data: blob:; style-src 'self' 'unsafe-inline'; media-src *; img-src 'self' data: content:; script-src 'self' 'unsafe-inline' 'unsafe-eval';">
   <meta name="format-detection" content="telephone=no">
   <meta name="msapplication-tap-highlight" content="no">
   <meta name="viewport" content="initial-scale=1, width=device-width, viewport-fit=cover">
@@ -29,6 +29,15 @@
   </form>
 </div>
 
-<script type="module" src="js/index.js"></script>
+<script src="js/index.js" onerror="console.error('Ошибка загрузки скрипта:', event)"></script>
+<script>
+  window.addEventListener('error', function(e) {
+    console.error('Глобальная ошибка:', e.error, e.message, e.filename, e.lineno, e.colno);
+  });
+
+  window.addEventListener('unhandledrejection', function(e) {
+    console.error('Unhandled promise rejection:', e.reason);
+  });
+</script>
 </body>
 </html>
