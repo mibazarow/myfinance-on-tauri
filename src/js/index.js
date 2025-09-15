@@ -1,5 +1,5 @@
 // Импортируем Tauri API
-const { invoke } = window.__TAURI__.tauri;
+import { invoke } from '@tauri-apps/api/core';
 
 // Глобальная переменная для хранения счетов
 let accounts = [];
