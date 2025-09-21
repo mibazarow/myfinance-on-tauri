@@ -4,9 +4,7 @@
 
 ## Демонстрация приложения
 
-[![Демонстрация приложения](https://img.youtube.com/vi/Y4TyerI-lfM/maxresdefault.jpg)](https://www.youtube.com/watch?v=Y4TyerI-lfM)
-
-*Нажмите на изображение выше, чтобы посмотреть видео-демонстрацию приложения*
+<iframe width="934" height="525" src="https://www.youtube.com/embed/Y4TyerI-lfM" title="Мои финансы приложенька" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 
 ## Преимущества Tauri v2 перед Electron
 - Значительно меньший размер приложения (в десятки раз)
