@@ -1,7 +1,5 @@
 #!/bin/bash
 
-cd /Users/bazarovmihail/Documents/CORDOVA/app.myfinance.baz/tauri-analog/src-tauri/icons
-
 # Создаем иконки нужных размеров
 cp ico_1024.png icon_original.png
 
