@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Создаем иконки нужных размеров
-cp ico_1024.png icon_original.png
+cp new_icon.png icon_original.png
 
 # Создаем PNG иконки разных размеров
 sips -z 32 32 icon_original.png --out 32x32.png
