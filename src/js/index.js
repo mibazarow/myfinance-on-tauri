@@ -30,8 +30,7 @@ window.onload = async function() {
 
 // Инициализация приложения
 function initApp() {
-    updateAccountsList();
-    updateTotalBalance();
+    hideSaveButton();
 }
 
 // Создание демо-счетов
@@ -96,7 +95,7 @@ async function saveAccounts() {
             const balanceInput = row.querySelector('.account_balance_input');
 
             const name = nameInput.value.trim();
-            const balance = parseFloat(balanceInput.value) || 0;
+            const balance = parseFloat(balanceInput.value.replace(/\s/g, '')) || 0;
 
             // Если название банка не пустое, добавляем в список
             if (name) {
@@ -119,6 +118,9 @@ async function saveAccounts() {
         updateAccountsList();
         updateTotalBalance();
 
+        // Скрываем кнопку после сохранения
+        hideSaveButton();
+
         // Показываем сообщение об успешном сохранении
         alert('Данные успешно сохранены');
     } catch (error) {
@@ -139,7 +141,7 @@ function addAccountRow() {
             <input type="text" class="account_name_input" placeholder="Название банка" value="">
         </div>
         <div class="bank_balance">
-            <input type="number" class="account_balance_input" placeholder="Баланс" value="0">
+            <input type="text" class="account_balance_input" placeholder="Баланс" value="0">
             <div class="bank_actions">
                 <button class="delete" type="button"></button>
             </div>
@@ -147,6 +149,10 @@ function addAccountRow() {
     `;
 
     accountsList.appendChild(accountRow);
+    
+    // Добавляем форматирование для нового поля баланса
+    const balanceInput = accountRow.querySelector('.account_balance_input');
+    addBalanceFormatting(balanceInput);
 
     // Добавляем обработчик для кнопки удаления
     const deleteButton = accountRow.querySelector('button.delete');
@@ -158,10 +164,13 @@ function addAccountRow() {
     // Обновляем итоговую сумму
     updateTotalBalanceFromInputs();
 
-    // Добавляем обработчики для автообновления суммы
+    // Добавляем обработчики для автообновления суммы и показа кнопки
     const inputs = accountRow.querySelectorAll('input');
     inputs.forEach(input => {
-        input.addEventListener('input', updateTotalBalanceFromInputs);
+        input.addEventListener('input', function() {
+            updateTotalBalanceFromInputs();
+            showSaveButton();
+        });
     });
 }
 
@@ -180,7 +189,7 @@ function updateAccountsList() {
                 <input type="text" class="account_name_input" placeholder="Название банка" value="${account.name}">
             </div>
             <div class="bank_balance">
-                <input type="number" class="account_balance_input" placeholder="Баланс" value="${account.balance}">
+                <input type="text" class="account_balance_input" placeholder="Баланс" value="${formatNumberWithSpaces(account.balance)}">
                  <div class="bank_actions">
                     <button class="delete" type="button"></button>
                 </div>
@@ -188,16 +197,23 @@ function updateAccountsList() {
         `;
 
         accountsList.appendChild(accountRow);
+        
+        // Добавляем форматирование для поля баланса
+        const balanceInput = accountRow.querySelector('.account_balance_input');
+        addBalanceFormatting(balanceInput);
 
         // Добавляем обработчик для кнопки удаления
         const deleteButton = accountRow.querySelector('button.delete');
         deleteButton.addEventListener('click', handleDeleteRow);
     });
 
-    // Добавляем обработчики для автообновления суммы
+    // Добавляем обработчики для автообновления суммы и показа кнопки
     const inputs = document.querySelectorAll('.account_name_input, .account_balance_input');
     inputs.forEach(input => {
-        input.addEventListener('input', updateTotalBalanceFromInputs);
+        input.addEventListener('input', function() {
+            updateTotalBalanceFromInputs();
+            showSaveButton();
+        });
     });
 }
 
@@ -216,15 +232,49 @@ function updateTotalBalanceFromInputs() {
     let totalBalance = 0;
 
     balanceInputs.forEach(input => {
-        const value = parseFloat(input.value) || 0;
+        const value = parseFloat(input.value.replace(/\s/g, '')) || 0;
         totalBalance += value;
     });
 
-    document.getElementById('total-balance').textContent = `${totalBalance.toLocaleString()} ₽`;
+    document.getElementById('total-balance').textContent = `${formatNumberWithSpaces(totalBalance)} ₽`;
 }
 
 // Обновление итоговой суммы из массива счетов
 function updateTotalBalance() {
     const totalBalance = accounts.reduce((sum, account) => sum + account.balance, 0);
-    document.getElementById('total-balance').textContent = `${totalBalance.toLocaleString()} ₽`;
+    document.getElementById('total-balance').textContent = `${formatNumberWithSpaces(totalBalance)} ₽`;
+}
+
+// Функция форматирования числа с пробелами (разделители тысяч)
+function formatNumberWithSpaces(number) {
+    return number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ' ');
+}
+
+// Добавление форматирования для поля баланса
+function addBalanceFormatting(input) {
+    // При потере фокуса - форматируем
+    input.addEventListener('blur', function() {
+        const value = parseFloat(this.value.replace(/\s/g, '')) || 0;
+        this.value = formatNumberWithSpaces(value);
+    });
+    
+    // При получении фокуса - убираем форматирование
+    input.addEventListener('focus', function() {
+        const value = this.value.replace(/\s/g, '');
+        this.value = value;
+    });
+}
+
+// Показать зеленую кнопку "Сохранить"
+function showSaveButton() {
+    const saveButton = document.getElementById('save-accounts');
+    saveButton.style.display = 'block';
+    saveButton.style.backgroundColor = '#28a745';
+    saveButton.textContent = 'Сохранить';
+}
+
+// Скрыть кнопку после сохранения
+function hideSaveButton() {
+    const saveButton = document.getElementById('save-accounts');
+    saveButton.style.display = 'none';
 }

@@ -64,16 +64,20 @@ body {
     }
 
     #save-accounts {
-      background: #0881FD;
+      display: none;
+      background: #28a745;
       color: #ffffff;
-      border:1px #0881FD solid;
+      border:1px #28a745 solid;
       height: 30px;
       padding: 0px 10px;
       cursor: pointer;
       border-radius: 5px;
       font-size: 15px;
+      &:hover {
+        background: #218838;
+      }
       &:active {
-        background: #0881CF;
+        background: #1e7e34;
       }
     }
   }
@@ -116,11 +120,6 @@ body {
       font-size: 15px;
       color: #333333;
       text-align: right;
-      &::-webkit-inner-spin-button {
-        /* display: none; <- Crashes Chrome on hover */
-        -webkit-appearance: none;
-        margin: 0; /* <-- Apparently some margin are still there even though it's hidden */
-      }
     }
   }
 
