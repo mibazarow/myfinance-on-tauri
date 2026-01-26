@@ -56,7 +56,6 @@ body {
   color: #0881FD;
 }
 .app_buttons #save-accounts {
-  display: none;
   background: #28a745;
   color: #ffffff;
   border: 1px #28a745 solid;
@@ -66,11 +65,15 @@ body {
   border-radius: 5px;
   font-size: 15px;
 }
-.app_buttons #save-accounts:hover {
+.app_buttons #save-accounts:hover:not(:disabled) {
   background: #218838;
 }
-.app_buttons #save-accounts:active {
+.app_buttons #save-accounts:active:not(:disabled) {
   background: #1e7e34;
+}
+.app_buttons #save-accounts:disabled {
+  cursor: not-allowed;
+  opacity: 0.7;
 }
 
 .bank_name {

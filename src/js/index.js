@@ -30,7 +30,7 @@ window.onload = async function() {
 
 // Инициализация приложения
 function initApp() {
-    hideSaveButton();
+    disableSaveButton();
 }
 
 // Создание демо-счетов
@@ -118,8 +118,8 @@ async function saveAccounts() {
         updateAccountsList();
         updateTotalBalance();
 
-        // Скрываем кнопку после сохранения
-        hideSaveButton();
+        // Делаем кнопку серой после сохранения
+        disableSaveButton();
 
         // Показываем сообщение об успешном сохранении
         alert('Данные успешно сохранены');
@@ -268,13 +268,15 @@ function addBalanceFormatting(input) {
 // Показать зеленую кнопку "Сохранить"
 function showSaveButton() {
     const saveButton = document.getElementById('save-accounts');
-    saveButton.style.display = 'block';
+    saveButton.disabled = false;
     saveButton.style.backgroundColor = '#28a745';
     saveButton.textContent = 'Сохранить';
 }
 
-// Скрыть кнопку после сохранения
-function hideSaveButton() {
+// Сделать кнопку серой и disabled после сохранения
+function disableSaveButton() {
     const saveButton = document.getElementById('save-accounts');
-    saveButton.style.display = 'none';
+    saveButton.disabled = true;
+    saveButton.style.backgroundColor = '#6c757d';
+    saveButton.textContent = 'Все сохранено';
 }
